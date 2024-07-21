@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx72by26fosnk"]
+
+[ext_resource type="Script" path="res://scenes/TopDownCharacter.gd" id="1_sp8w3"]
+
+[node name="TopDownCharacter" type="CharacterBody2D"]
+script = ExtResource("1_sp8w3")
