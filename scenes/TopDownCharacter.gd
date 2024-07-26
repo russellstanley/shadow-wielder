@@ -3,10 +3,15 @@ class_name TopDownCharacter extends CharacterBody2D
 @export var ACCELERATION = 300
 @export var FRICTION = 1000
 @export var SPEED = 100.0
-@onready var animated_sprite = $AnimatedSprite
+@export var health : int = 3
+@export var animated_sprite: AnimatedSprite2D
 
 var current_direction : Direction = Direction.DOWN
 var state : State = State.WALK
+
+signal damage_taken()
+signal damage_received(health: int)
+signal character_died
 
 enum Direction {
 	UP,
@@ -20,7 +25,9 @@ enum State {
 	ATTACK,
 	WANDER, # TODO
 	TRACKING,
-	FROZEN
+	HURT,
+	FROZEN,
+	DEAD
 }
 	
 func update_velocity(direction, delta):
@@ -52,6 +59,17 @@ func update_annimation(type : String, direction : Direction):
 		animated_sprite.play(type + "_left")
 	elif direction == Direction.RIGHT:
 		animated_sprite.play(type + "_right")
+
+func transition_state(new_state):
+	state = new_state
+	
+func damage():
+	print(health)
+	health -= 1
+	damage_received.emit(health)
+	if health <= 0:
+		character_died.emit()
+		transition_state(State.DEAD)
+	else:
+		transition_state(State.HURT)
 		
-func _on_animated_sprite_animation_finished():
-	state = State.WALK
