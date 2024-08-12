@@ -30,6 +30,7 @@ attack={
 2d_physics/layer_3="EnemyHitbox"
 2d_physics/layer_5="Player"
 2d_physics/layer_6="PlayerHitbox"
+2d_physics/layer_7="TreeArea"
 
 [rendering]
 

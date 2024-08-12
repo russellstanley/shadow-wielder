@@ -4,3 +4,4 @@
 
 [node name="TopDownCharacter" type="CharacterBody2D"]
 script = ExtResource("1_sp8w3")
+max_health = 3

@@ -26,3 +26,7 @@ game_manager = NodePath("../..")
 
 [node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("2_wgcik")]
 game_manager = NodePath("../..")
+
+[connection signal="potion_dropped" from="Forest" to="." method="_on_forest_potion_dropped"]
+[connection signal="wave_ended" from="Forest" to="." method="_on_forest_wave_ended"]
+[connection signal="wave_started" from="Forest" to="." method="_on_forest_wave_started"]

@@ -3,13 +3,21 @@ class_name TopDownCharacter extends CharacterBody2D
 @export var ACCELERATION = 300
 @export var FRICTION = 1000
 @export var SPEED = 100.0
-@export var health : int = 3
+@export var max_health = 5
 @export var animated_sprite: AnimatedSprite2D
+
+var health : int = max_health:
+	set(value):
+		if value > max_health:
+			health = max_health
+		else:
+			health = value
+			
 
 var current_direction : Direction = Direction.DOWN
 var state : State = State.WALK
 
-signal damage_taken()
+signal damage_taken(enemy : Enemy)
 signal damage_received(health: int)
 signal character_died
 
@@ -29,6 +37,9 @@ enum State {
 	FROZEN,
 	DEAD
 }
+
+func _ready():
+	health = max_health
 	
 func update_velocity(direction, delta):
 	if (direction != Vector2.ZERO):
@@ -63,8 +74,13 @@ func update_annimation(type : String, direction : Direction):
 func transition_state(new_state):
 	state = new_state
 	
+func knockback(direction, strength):
+	velocity = velocity + (direction * strength)
+	
+func heal(amount):
+	health += amount
+	
 func damage():
-	print(health)
 	health -= 1
 	damage_received.emit(health)
 	if health <= 0:

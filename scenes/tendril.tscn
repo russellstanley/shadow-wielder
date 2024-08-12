@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://do85dder81igw"]
+
+[ext_resource type="Texture2D" uid="uid://bbmi7xdpgvnb8" path="res://assets/custom/tendril.png" id="1_ei05k"]
+[ext_resource type="Script" path="res://scenes/tendril.gd" id="2_0j5lh"]
+
+[node name="Tendril" type="Sprite2D"]
+visible = false
+texture_repeat = 2
+position = Vector2(-3, -3)
+texture = ExtResource("1_ei05k")
+centered = false
+offset = Vector2(0, 0.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 6, 5)
+script = ExtResource("2_0j5lh")

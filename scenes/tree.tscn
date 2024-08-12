@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0d7q3hade0at"]
+[gd_scene load_steps=5 format=3 uid="uid://b0d7q3hade0at"]
 
+[ext_resource type="Script" path="res://scenes/tree.gd" id="1_3pci6"]
 [ext_resource type="Texture2D" uid="uid://cbrgbdhivunf8" path="res://assets/world/TX Plant.png" id="1_kg3yf"]
+[ext_resource type="PackedScene" uid="uid://dt4si4f58nsik" path="res://scenes/shadow.tscn" id="2_omjlv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_paw6y"]
 radius = 4.0
 height = 8.0
 
 [node name="Tree" type="StaticBody2D"]
+collision_layer = 65
+collision_mask = 65
+script = ExtResource("1_3pci6")
 
 [node name="Tree" type="Sprite2D" parent="."]
 position = Vector2(-2, -55)
@@ -16,3 +21,5 @@ region_rect = Rect2(295, 31, 79, 120)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_paw6y")
+
+[node name="Shadow" parent="." instance=ExtResource("2_omjlv")]

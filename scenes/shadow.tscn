@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dew0bxmlfk0m7" path="res://assets/world/TX Shadow Plant.png" id="1_7ewfl"]
 [ext_resource type="Script" path="res://scenes/shadow.gd" id="2_fck10"]
-[ext_resource type="Texture2D" uid="uid://bbmi7xdpgvnb8" path="res://assets/custom/tendril.png" id="2_yftqi"]
+[ext_resource type="PackedScene" uid="uid://do85dder81igw" path="res://scenes/tendril.tscn" id="3_q0piw"]
 
 [node name="Shadow" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.776471)
@@ -13,12 +13,4 @@ region_enabled = true
 region_rect = Rect2(304, 111, 74, 40)
 script = ExtResource("2_fck10")
 
-[node name="Tendril" type="Sprite2D" parent="."]
-visible = false
-texture_repeat = 2
-position = Vector2(-3, -3)
-texture = ExtResource("2_yftqi")
-centered = false
-offset = Vector2(0, 0.5)
-region_enabled = true
-region_rect = Rect2(0, 0, 6, 5)
+[node name="Tendril" parent="." instance=ExtResource("3_q0piw")]

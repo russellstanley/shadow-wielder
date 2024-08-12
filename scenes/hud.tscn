@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cip4fybw6r3dw"]
+[gd_scene load_steps=7 format=3 uid="uid://cip4fybw6r3dw"]
 
 [ext_resource type="Script" path="res://scenes/hud.gd" id="1_ne2w0"]
+[ext_resource type="Texture2D" uid="uid://buxw8n2g6otd2" path="res://assets/custom/HealthBar.png" id="2_eg4en"]
+[ext_resource type="Texture2D" uid="uid://daa3y4o4wnxkq" path="res://assets/interface/potion_03h.png" id="2_ewetf"]
+[ext_resource type="Texture2D" uid="uid://deuqns6mo4qtr" path="res://assets/custom/HealthUnit.png" id="2_ol3ua"]
+[ext_resource type="Texture2D" uid="uid://5u6far430nih" path="res://assets/custom/ManaUnit.png" id="3_cjlkx"]
+[ext_resource type="Texture2D" uid="uid://8fx83n8w1ftc" path="res://assets/custom/ManaBar.png" id="5_14nlj"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -11,15 +16,90 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ne2w0")
 
+[node name="PotionContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -104.0
+offset_right = 29.0
+offset_bottom = -86.0
+grow_vertical = 0
+
+[node name="Potions" type="TextureRect" parent="PotionContainer"]
+layout_mode = 2
+texture = ExtResource("2_ewetf")
+stretch_mode = 1
+
+[node name="HealthContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -72.0
+offset_right = 20.0
+offset_bottom = -68.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="Health" type="TextureRect" parent="HealthContainer"]
+layout_mode = 2
+texture = ExtResource("2_ol3ua")
+stretch_mode = 1
+
+[node name="ManaContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = -28.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="Mana" type="TextureRect" parent="ManaContainer"]
+layout_mode = 2
+texture = ExtResource("3_cjlkx")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_left = 9.0
+offset_top = -100.0
+offset_right = 69.0
+offset_bottom = -36.0
 grow_vertical = 0
+scale = Vector2(2, 2)
+theme_override_constants/separation = -10
 
-[node name="HealthLabel" type="Label" parent="VBoxContainer"]
+[node name="HealthBar" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
-text = "2"
+texture = ExtResource("2_eg4en")
+stretch_mode = 1
+
+[node name="ManaBar" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_14nlj")
+
+[node name="Header" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_right = 21.5
+offset_bottom = 49.0
+grow_horizontal = 2
+
+[node name="WaveCounter" type="Label" parent="Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Wave
+0"
+horizontal_alignment = 1
